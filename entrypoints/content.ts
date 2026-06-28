@@ -41,5 +41,3 @@ export default defineContentScript({
     console.log(await db.getAll('entries'));
   },
 });
-
-// nya
