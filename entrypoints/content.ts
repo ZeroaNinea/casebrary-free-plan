@@ -23,5 +23,21 @@ export default defineContentScript({
     console.log(await db.getAll('entries'));
 
     await db.delete('entries', '1');
+
+    await db.put('entries', {
+      id: '2',
+      title: 'Hello 2',
+      parentId: null,
+      type: EntryType.Note,
+      properties: {},
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
+    } as Entry);
+
+    console.log(await db.getAll('entries'));
+
+    await db.clear('entries');
+
+    console.log(await db.getAll('entries'));
   },
 });
