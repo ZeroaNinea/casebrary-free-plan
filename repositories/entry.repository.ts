@@ -2,31 +2,44 @@ import { dbPromise } from '../database/db';
 import Entry from '../types/entry.interface';
 
 export default class EntryRepository {
+  private verifyTitleIdAndType(entry: Entry) {
+    if (!entry.title || !entry.id || entry.type === undefined) {
+      throw new Error('Entry must have a title, id and type.');
+    }
+  }
+
+  private verifyIfEntryExists(entry: Entry) {
+    if (!entry) {
+      throw new Error('Entry not found.');
+    }
+  }
+
   async create(entry: Entry) {
     const db = await dbPromise;
-    await db.put('entries', entry);
+    const existing = await db.get('entries', entry.id);
+
+    if (existing) {
+      throw new Error('Entry already exists.');
+    }
+
+    await db.add('entries', entry);
   }
 
   async delete(id: string) {
     const db = await dbPromise;
-
     const entry = await db.get('entries', id);
 
-    if (!entry) {
-      throw new Error('Entry not found.');
-    }
+    this.verifyIfEntryExists(entry);
 
     await db.delete('entries', id);
   }
 
   async update(id: string, updates: Partial<Entry>) {
     const db = await dbPromise;
-
     const entry = await db.get('entries', id);
 
-    if (!entry) {
-      throw new Error('Entry not found.');
-    }
+    this.verifyIfEntryExists(entry);
+    this.verifyTitleIdAndType(entry);
 
     await db.put('entries', {
       ...entry,
@@ -42,18 +55,20 @@ export default class EntryRepository {
       return [];
     }
 
-    const entry = await db.get('entries', parentId);
-
-    if (!entry) {
-      throw new Error('Entry not found.');
-    }
-
-    const entries = await db.getAll('entries');
-    return entries.filter((entry) => entry.parentId === parentId);
+    return db.getAllFromIndex('entries', 'parentId', parentId);
   }
 
   async getAllEntries() {
     const db = await dbPromise;
     return db.getAll('entries');
+  }
+
+  async get(id: string) {
+    const db = await dbPromise;
+    const entry = await db.get('entries', id);
+
+    this.verifyIfEntryExists(entry);
+
+    return entry;
   }
 }
