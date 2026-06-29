@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { createI18n } from '@wxt-dev/i18n';
 import reactLogo from '@/assets/react.svg';
 import wxtLogo from '/wxt.svg';
 import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
+  const t = createI18n().t;
 
   return (
     <>
@@ -28,6 +30,7 @@ function App() {
       <p className="read-the-docs">
         Click on the WXT and React logos to learn more
       </p>
+      <p>{t('helloWorld')}</p>
     </>
   );
 }
