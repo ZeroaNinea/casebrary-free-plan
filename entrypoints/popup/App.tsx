@@ -34,7 +34,12 @@ function App() {
         Click on the WXT and React logos to learn more
       </p>
       <p>{t('helloWorld')}</p>
-      <button onClick={() => i18n.changeLanguage('ru')}>RU</button>
+      <button
+        onClick={() => i18n.changeLanguage('ru')}
+        className="bg-amber-500 text-white px-4 py-2 rounded"
+      >
+        RU
+      </button>
       <button onClick={() => i18n.changeLanguage('en')}>EN</button>
     </>
   );
