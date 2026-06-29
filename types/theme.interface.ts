@@ -16,7 +16,4 @@ export default interface Theme {
   accent: string;
   accentHover: string;
   accentActive: string;
-  hover: string;
-  active: string;
-  focus: string;
 }
