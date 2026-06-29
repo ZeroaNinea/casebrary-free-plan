@@ -7,6 +7,8 @@ import i18n from '@/utils/i18n';
 
 import './App.css';
 
+import RippleButton from '@/entrypoints/components/ripple-button';
+
 function App() {
   const [count, setCount] = useState(0);
   const { t } = useTranslation();
@@ -34,12 +36,25 @@ function App() {
         Click on the WXT and React logos to learn more
       </p>
       <p>{t('helloWorld')}</p>
-      <button
+      {/* <button
         onClick={() => i18n.changeLanguage('ru')}
         className="bg-amber-500 text-white px-4 py-2 rounded"
       >
         RU
-      </button>
+      </button> */}
+      <RippleButton
+        mode="light"
+        onClick={() => i18n.changeLanguage('ru')}
+        classnamesonclick={[
+          'bg-blue-500/70',
+          'text-white',
+          'outline-blue-500/70',
+        ]}
+        className="text-sm hover:bg-blue-500/70 hover:text-blue-100 text-blue-800 transition-all duration-300 p-3 md:rounded-full w-full md:w-auto text-left md:pl-3 sm:pl-6 cursor-pointer md:outline outline-blue-800 hover:outline-blue-800 -outline-offset-2"
+      >
+        RU
+      </RippleButton>
+
       <button onClick={() => i18n.changeLanguage('en')}>EN</button>
     </>
   );
