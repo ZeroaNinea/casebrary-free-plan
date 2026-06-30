@@ -1,19 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
-import Entry from '@/types/entry.interface';
-import fetchEntries from './entries.thunks';
+import EntriesState from '@/types/entries-state.interface';
+import { fetchEntries } from './entries.thunks';
 
 export const entriesSlice = createSlice({
   name: 'entries',
-  initialState: [] as Entry[],
+  initialState: {
+    entries: [],
+    loading: false,
+    error: undefined,
+  } as EntriesState,
   reducers: {
     createEntry(state, action) {
-      state.push(action.payload);
+      state.entries.push(action.payload);
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchEntries.fulfilled, (state, action) => {
-      state.push(...action.payload);
-    });
+    builder
+      .addCase(fetchEntries.pending, (state) => {
+        state.loading = true;
+        state.error = undefined;
+      })
+      .addCase(fetchEntries.fulfilled, (state, action) => {
+        state.loading = false;
+        state.entries = action.payload;
+      })
+      .addCase(fetchEntries.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 

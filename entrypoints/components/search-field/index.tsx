@@ -3,12 +3,7 @@ import { Search, X } from 'lucide-react';
 
 import IconButton from '@/entrypoints/components/buttons/icon-button';
 
-interface SearchFieldProps {
-  label?: string;
-  placeholder?: string;
-  value?: string;
-  onChange?: (value: string) => void;
-}
+import SearchFieldProps from './types/search-field-props.interface';
 
 export default function SearchField({
   label = 'Search',
