@@ -12,7 +12,6 @@ export const entriesSlice = createSlice({
   },
   reducers: {
     createEntry(state, action) {
-      entryRepository.create(action.payload);
       state.entries.push(action.payload);
     },
   },
