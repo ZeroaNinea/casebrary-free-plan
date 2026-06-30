@@ -51,6 +51,7 @@ function App() {
           className="flex items-center gap-1 px-2 py-1
           bg-primary-container-filled hover:bg-primary-container-filled-hover
           rounded-md cursor-pointer"
+          classnamesonclick={['bg-primary-container-filled-hover']}
         >
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">
@@ -62,6 +63,7 @@ function App() {
           className="flex items-center gap-1 px-2 py-1
           bg-primary-container-filled hover:bg-primary-container-filled-hover
           rounded-md cursor-pointer"
+          classnamesonclick={['bg-primary-container-filled-hover']}
         >
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">{t('note')}</span>
