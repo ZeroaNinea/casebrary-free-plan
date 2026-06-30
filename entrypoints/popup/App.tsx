@@ -21,7 +21,7 @@ function App() {
         <div className="flex gap-2 items-center">
           <RippleButton
             mode="dark"
-            className="p-2 rounded-full cursor-pointer hover:bg-primary-container"
+            className="p-2 rounded-full cursor-pointer hover:bg-primary-container transition-all duration-200"
             classnamesonclick={['bg-primary-container']}
           >
             <Menu size={18} color="var(--color-primary-title)" />
@@ -31,14 +31,14 @@ function App() {
         <div className="flex gap-2 items-center">
           <RippleButton
             mode="dark"
-            className="p-2 rounded-full cursor-pointer hover:bg-primary-container"
+            className="p-2 rounded-full cursor-pointer hover:bg-primary-container transition-all duration-200"
             classnamesonclick={['bg-primary-container']}
           >
             <Globe size={18} color="var(--color-primary-title)" />
           </RippleButton>
           <RippleButton
             mode="dark"
-            className="p-2 rounded-full cursor-pointer hover:bg-primary-container"
+            className="p-2 rounded-full cursor-pointer hover:bg-primary-container transition-all duration-200"
             classnamesonclick={['bg-primary-container']}
           >
             <Settings size={18} color="var(--color-primary-title)" />
@@ -50,7 +50,8 @@ function App() {
           mode="light"
           className="flex items-center gap-1 px-2 py-1
           bg-primary-container-filled hover:bg-primary-container-filled-hover
-          rounded-md cursor-pointer"
+          rounded-md cursor-pointer
+          transition-all duration-200"
           classnamesonclick={['bg-primary-container-filled-hover']}
         >
           <Plus size={16} color="var(--color-on-primary-container)" />
@@ -62,7 +63,8 @@ function App() {
           mode="light"
           className="flex items-center gap-1 px-2 py-1
           bg-primary-container-filled hover:bg-primary-container-filled-hover
-          rounded-md cursor-pointer"
+          rounded-md cursor-pointer
+          transition-all duration-200"
           classnamesonclick={['bg-primary-container-filled-hover']}
         >
           <Plus size={16} color="var(--color-on-primary-container)" />
