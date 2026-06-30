@@ -1,12 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import EntryRepository from '@/repositories/entry.repository';
+import { createSlice } from '@reduxjs/toolkit';
 import Entry from '@/types/entry.interface';
-
-const fetchEntries = createAsyncThunk('entries/fetchEntries', async () => {
-  const entryRepository = new EntryRepository();
-  const entries = await entryRepository.getAllEntries();
-  return entries;
-});
+import fetchEntries from './entries.thunks';
 
 export const entriesSlice = createSlice({
   name: 'entries',
