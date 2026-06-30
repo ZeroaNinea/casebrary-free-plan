@@ -74,4 +74,10 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-active: var(--accent-active);
+  --color-primary-title: var(--primary-title);
+  --color-primary-container: color-mix(
+    in lch,
+    var(--primary-container) 60%,
+    transparent
+  );
 }

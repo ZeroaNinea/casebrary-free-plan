@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import reactLogo from '@/assets/react.svg';
-import wxtLogo from '/wxt.svg';
+// import reactLogo from '@/assets/react.svg';
+// import wxtLogo from '/wxt.svg';
+
+import { Menu, Settings, Globe } from 'lucide-react';
 
 import i18n from '@/utils/i18n';
 
@@ -10,12 +12,40 @@ import './App.css';
 import RippleButton from '@/entrypoints/components/ripple-button';
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   const { t } = useTranslation();
 
   return (
     <>
-      <div className="bg-primary-500">
+      <div className="flex justify-between w-100 p-2">
+        <div className="flex gap-2 items-center">
+          <RippleButton
+            mode="dark"
+            className="p-2 rounded-full cursor-pointer hover:bg-primary-container"
+            classnamesonclick={['bg-primary-container']}
+          >
+            <Menu size={18} color="var(--color-primary-title)" />
+          </RippleButton>
+          <h1 className="font-bold text-primary-title text-lg">Casebrary</h1>
+        </div>
+        <div className="flex gap-2 items-center">
+          <RippleButton
+            mode="dark"
+            className="p-2 rounded-full cursor-pointer hover:bg-primary-container"
+            classnamesonclick={['bg-primary-container']}
+          >
+            <Globe size={18} color="var(--color-primary-title)" />
+          </RippleButton>
+          <RippleButton
+            mode="dark"
+            className="p-2 rounded-full cursor-pointer hover:bg-primary-container"
+            classnamesonclick={['bg-primary-container']}
+          >
+            <Settings size={18} color="var(--color-primary-title)" />
+          </RippleButton>
+        </div>
+      </div>
+      {/* <div className="bg-primary-500">
         <a href="https://wxt.dev" target="_blank">
           <img src={wxtLogo} className="logo" alt="WXT logo" />
         </a>
@@ -36,12 +66,6 @@ function App() {
         Click on the WXT and React logos to learn more
       </p>
       <p>{t('helloWorld')}</p>
-      {/* <button
-        onClick={() => i18n.changeLanguage('ru')}
-        className="bg-amber-500 text-white px-4 py-2 rounded"
-      >
-        RU
-      </button> */}
       <RippleButton
         mode="light"
         onClick={() => i18n.changeLanguage('ru')}
@@ -55,7 +79,7 @@ function App() {
         RU
       </RippleButton>
 
-      <button onClick={() => i18n.changeLanguage('en')}>EN</button>
+      <button onClick={() => i18n.changeLanguage('en')}>EN</button> */}
     </>
   );
 }

@@ -33,4 +33,6 @@ export default interface Theme {
   accent: string;
   accentHover: string;
   accentActive: string;
+  primaryTitle: string;
+  primaryContainer: string;
 }

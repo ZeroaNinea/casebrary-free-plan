@@ -33,6 +33,8 @@ export default function createTheme(
       accent: palettes.secondary['500'],
       accentHover: palettes.secondary['600'],
       accentActive: palettes.secondary['700'],
+      primaryTitle: palettes.primary['900'],
+      primaryContainer: palettes.primary['100'],
     };
 
     return theme;
@@ -54,6 +56,8 @@ export default function createTheme(
       accent: palettes.secondary['400'],
       accentHover: palettes.secondary['300'],
       accentActive: palettes.secondary['200'],
+      primaryTitle: palettes.primary['100'],
+      primaryContainer: palettes.primary['800'],
     };
 
     return theme;
