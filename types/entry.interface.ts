@@ -20,6 +20,7 @@ export default interface Entry {
   title: string;
   icon?: string;
   color?: string;
+  order?: number;
 
   properties: Record<string, PropertyValue>;
 
