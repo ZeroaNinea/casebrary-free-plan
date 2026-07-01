@@ -31,7 +31,7 @@ function App() {
   console.log(entries);
 
   return (
-    <div className="w-100 overflow-x-hidden">
+    <div className="relative w-100 overflow-x-hidden">
       <div className="flex justify-between w-100 p-2">
         <div className="flex gap-2 items-center">
           <IconButton title="Menu">
