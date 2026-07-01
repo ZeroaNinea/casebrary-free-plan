@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 
 import EntryRepository from '@/repositories/entry.repository';
-import Entry from '@/types/entry.interface';
+import Entry, { EntryType } from '@/types/entry.interface';
 import CreateEntryDto from '@/types/create-entry.dto';
 
 export default class EntryService {
@@ -9,6 +9,12 @@ export default class EntryService {
 
   async create(data: CreateEntryDto): Promise<Entry> {
     const now = Date.now();
+
+    const parent = await this.repository.get(data.parentId || '');
+
+    if (parent?.type !== EntryType.Folder) {
+      throw new Error('Parent must be a folder.');
+    }
 
     const entry: Entry = {
       id: crypto.randomUUID(),
