@@ -79,7 +79,7 @@ function App() {
           // }}
         />
       </div>
-      <div style={{ marginBottom: '120px' }}></div>
+      <div style={{ marginBottom: '130px' }}></div>
       <EntryEditorPage
         show={currentPage === 'note' || currentPage === 'folder'}
         type={currentPage}
