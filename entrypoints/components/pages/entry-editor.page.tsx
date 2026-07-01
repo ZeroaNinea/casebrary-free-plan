@@ -31,10 +31,11 @@ export default function EntryEditorPage({
         <ChevronLeft size={18} color="var(--color-primary-on-container)" />
         <span className="text-primary-on-container">{t('back')}</span>
       </TransparentPillButton>
-      <div className="py-3">
+      <div className="px-3 py-3">
         <TitleField
           label={t('titleLabel')}
           placeholder={t('titlePlaceholder')}
+          icon="type"
           // onChange={(value) => {
           //   // TODO: set title
           // }}

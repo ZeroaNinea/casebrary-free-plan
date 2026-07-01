@@ -73,6 +73,7 @@ function App() {
         <SearchField
           label={t('searchLabel')}
           placeholder={t('searchRecords')}
+          icon="search"
           // onChange={(value) => {
           //   // TODO: filter entries
           // }}

@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, Type, X } from 'lucide-react';
 
 import IconButton from '@/entrypoints/components/buttons/icon-button';
 
-import SearchFieldProps from './types/search-field-props.interface';
+import InputFieldProps from './types/search-field-props.interface';
 
-export default function SearchField({
+export default function InputField({
   label = 'Search',
   placeholder = 'Search...',
   value,
+  icon,
   onChange,
-}: SearchFieldProps) {
+}: InputFieldProps) {
   const [internalValue, setInternalValue] = useState('');
 
   const currentValue = value ?? internalValue;
@@ -20,6 +21,15 @@ export default function SearchField({
       onChange(value);
     } else {
       setInternalValue(value);
+    }
+  }
+
+  function renderIcon(icon: InputFieldProps['icon']) {
+    switch (icon) {
+      case 'search':
+        return <Search size={16} className="text-text-muted shrink-0" />;
+      case 'type':
+        return <Type size={16} className="text-text-muted shrink-0" />;
     }
   }
 
@@ -35,7 +45,8 @@ export default function SearchField({
         py-1
       "
     >
-      <Search size={16} className="text-text-muted shrink-0" />
+      {/* <Search size={16} className="text-text-muted shrink-0" /> */}
+      {icon && renderIcon(icon)}
 
       <input
         className="
