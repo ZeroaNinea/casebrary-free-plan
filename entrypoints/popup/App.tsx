@@ -16,11 +16,12 @@ import { useAppDispatch, useAppSelector } from '@/utils/store';
 import { fetchEntries } from '@/features/entries/entries.thunks';
 
 function App() {
-  const [showEntryEditor, setShowEntryEditor] = useState(false);
-
   const { t } = useTranslation();
-
   const dispatch = useAppDispatch();
+
+  const [currentPage, setCurrentPage] = useState<'folder' | 'note' | null>(
+    null,
+  );
 
   useEffect(() => {
     dispatch(fetchEntries());
@@ -52,14 +53,18 @@ function App() {
         <FilledButton
           title="Folder"
           isState={true}
-          onClick={() => setShowEntryEditor(true)}
+          onClick={() => setCurrentPage('folder')}
         >
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">
             {t('folder')}
           </span>
         </FilledButton>
-        <FilledButton title="Note">
+        <FilledButton
+          title="Note"
+          isState={true}
+          onClick={() => setCurrentPage('note')}
+        >
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">{t('note')}</span>
         </FilledButton>
@@ -75,8 +80,8 @@ function App() {
       </div>
       <div className="mb-2"></div>
       <EntryEditorPage
-        show={showEntryEditor}
-        close={() => setShowEntryEditor(false)}
+        show={currentPage === 'note' || currentPage === 'folder'}
+        close={() => setCurrentPage(null)}
       />
     </div>
   );
