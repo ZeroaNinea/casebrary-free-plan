@@ -79,7 +79,7 @@ function App() {
           // }}
         />
       </div>
-      <div className="mb-2"></div>
+      <div className="mb-5"></div>
       <EntryEditorPage
         show={currentPage === 'note' || currentPage === 'folder'}
         type={currentPage}

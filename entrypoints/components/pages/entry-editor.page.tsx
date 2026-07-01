@@ -2,9 +2,12 @@ import { ChevronLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
+import IconButton from '@/entrypoints/components/buttons/icon-button';
 import TitleField from '@/entrypoints/components/input-field';
 
 import CurrentPage from '@/types/current-page.alias';
+
+import { icons, IconName } from '@/utils/icons';
 
 export default function EntryEditorPage({
   show,
@@ -15,6 +18,10 @@ export default function EntryEditorPage({
   close: () => void;
 }) {
   const { t } = useTranslation();
+
+  const [title, setTitle] = useState('');
+  const [icon, setIcon] = useState<IconName>('folder');
+  const [color, setColor] = useState('#4FC3F7');
 
   return (
     <div
@@ -40,6 +47,17 @@ export default function EntryEditorPage({
           //   // TODO: set title
           // }}
         />
+        <div className="flex flex-wrap justify-center gap-2 my-2">
+          {Object.entries(icons).map(([name, Icon]) => (
+            <IconButton
+              key={name}
+              isState={icon === name}
+              onClick={() => setIcon(name as IconName)}
+            >
+              <Icon size={18} />
+            </IconButton>
+          ))}
+        </div>
       </div>
     </div>
   );
