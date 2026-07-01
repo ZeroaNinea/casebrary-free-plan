@@ -7,7 +7,12 @@ export default function EntryEditorPage({
 }) {
   return (
     <div
-      className={`absolute top-0 ${show ? 'left-0' : 'left-full'} bg-bg w-full transition-all duration-200`}
+      className={`
+        absolute inset-0
+        bg-bg
+        transition-transform duration-200
+        ${show ? 'translate-x-0' : 'translate-x-full'}
+      `}
     >
       <button onClick={close}>Close</button>
       Entry Editor
