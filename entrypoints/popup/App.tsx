@@ -74,7 +74,10 @@ function App() {
         />
       </div>
       <div className="mb-2"></div>
-      <EntryEditorPage show={showEntryEditor} />
+      <EntryEditorPage
+        show={showEntryEditor}
+        close={() => setShowEntryEditor(false)}
+      />
     </div>
   );
 }
