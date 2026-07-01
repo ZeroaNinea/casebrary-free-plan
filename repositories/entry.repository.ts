@@ -56,8 +56,9 @@ export default class EntryRepository {
   async getChildren(parentId: string | null) {
     const db = await dbPromise;
 
-    if (!parentId) {
-      return [];
+    if (parentId === null) {
+      const entries = await db.getAll('entries');
+      return entries.filter((e) => e.parentId === null);
     }
 
     return db.getAllFromIndex('entries', 'parentId', parentId);
