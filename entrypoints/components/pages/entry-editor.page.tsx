@@ -1,7 +1,8 @@
 import { ChevronLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-import TransparentPillButton from '../buttons/transparent-pill-button';
+import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
+import TitleField from '@/entrypoints/components/search-field';
 
 import CurrentPage from '@/types/current-page.alias';
 
@@ -30,7 +31,15 @@ export default function EntryEditorPage({
         <ChevronLeft size={18} color="var(--color-primary-on-container)" />
         <span className="text-primary-on-container">{t('back')}</span>
       </TransparentPillButton>
-      Entry Editor
+      <div className="py-3">
+        <TitleField
+          label={t('titleLabel')}
+          placeholder={t('titlePlaceholder')}
+          // onChange={(value) => {
+          //   // TODO: set title
+          // }}
+        />
+      </div>
     </div>
   );
 }

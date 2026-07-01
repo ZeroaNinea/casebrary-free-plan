@@ -3,5 +3,7 @@
   "note": "Заметка",
   "searchLabel": "Поиск",
   "searchRecords": "Поиск записей...",
-  "back": "Назад"
+  "back": "Назад",
+  "titleLabel": "Заголовок",
+  "titlePlaceholder": "Установить заголовок..."
 }

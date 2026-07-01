@@ -3,5 +3,7 @@
   "note": "Note",
   "searchLabel": "Search",
   "searchRecords": "Search records...",
-  "back": "Back"
+  "back": "Back",
+  "titleLabel": "Title",
+  "titlePlaceholder": "Set a title..."
 }
