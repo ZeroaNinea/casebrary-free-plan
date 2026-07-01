@@ -15,13 +15,13 @@ import EntryEditorPage from '@/entrypoints/components/pages/entry-editor.page';
 import { useAppDispatch, useAppSelector } from '@/utils/store';
 import { fetchEntries } from '@/features/entries/entries.thunks';
 
+import CurrentPage from '@/types/current-page.alias';
+
 function App() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const [currentPage, setCurrentPage] = useState<'folder' | 'note' | null>(
-    null,
-  );
+  const [currentPage, setCurrentPage] = useState<CurrentPage>(null);
 
   useEffect(() => {
     dispatch(fetchEntries());
@@ -81,6 +81,7 @@ function App() {
       <div className="mb-2"></div>
       <EntryEditorPage
         show={currentPage === 'note' || currentPage === 'folder'}
+        type={currentPage}
         close={() => setCurrentPage(null)}
       />
     </div>

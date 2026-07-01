@@ -3,11 +3,14 @@ import { useTranslation } from 'react-i18next';
 
 import TransparentPillButton from '../buttons/transparent-pill-button';
 
+import CurrentPage from '@/types/current-page.alias';
+
 export default function EntryEditorPage({
   show,
   close,
 }: {
   show: boolean;
+  type: CurrentPage;
   close: () => void;
 }) {
   const { t } = useTranslation();
