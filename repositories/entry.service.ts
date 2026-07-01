@@ -8,10 +8,12 @@ export default class EntryService {
   async create(data: CreateEntryDto): Promise<Entry> {
     const now = Date.now();
 
-    const parent = await this.repository.get(data.parentId || '');
+    if (data.parentId) {
+      const parent = await this.repository.get(data.parentId);
 
-    if (parent?.type !== EntryType.Folder) {
-      throw new Error('Parent must be a folder.');
+      if (parent.type !== EntryType.Folder) {
+        throw new Error('Parent must be a folder.');
+      }
     }
 
     const entry: Entry = {
