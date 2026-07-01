@@ -2,7 +2,7 @@ import { ChevronLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
-import TitleField from '@/entrypoints/components/search-field';
+import TitleField from '@/entrypoints/components/input-field';
 
 import CurrentPage from '@/types/current-page.alias';
 
