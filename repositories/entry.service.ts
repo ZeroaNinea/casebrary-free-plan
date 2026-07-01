@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 import EntryRepository from '@/repositories/entry.repository';
 import Entry from '@/types/entry.interface';
 import CreateEntryDto from '@/types/create-entry.dto';

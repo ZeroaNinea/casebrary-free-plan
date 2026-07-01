@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import EntryRepository from '@/repositories/entry.repository';
-import EntryService from './entry.service';
+import EntryService from '../../repositories/entry.service';
 
 // import Entry from '@/types/entry.interface';
 import CreateEntryDto from '@/types/create-entry.dto';
