@@ -11,16 +11,21 @@ import IconButton from '@/entrypoints/components/buttons/icon-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import SearchField from '@/entrypoints/components/search-field';
 
-import store from '@/utils/store';
+import { useAppDispatch, useAppSelector } from '@/utils/store';
 import { fetchEntries } from '@/features/entries/entries.thunks';
 
 function App() {
   const { t } = useTranslation();
 
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    store.dispatch(fetchEntries());
-    console.log(store.getState());
-  }, []);
+    dispatch(fetchEntries());
+  }, [dispatch]);
+
+  const entries = useAppSelector((state) => state.entries.entries);
+
+  console.log(entries);
 
   return (
     <>
