@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import ColorInputProps from './types/color-input-props.interface';
-import './style.css';
+
+import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 
 export default function ColorInput({
   label = 'Color',
@@ -8,8 +9,6 @@ export default function ColorInput({
   onChange,
 }: ColorInputProps) {
   const [internalValue, setInternalValue] = useState('#4FC3F7');
-  const rippleRef = useRef<HTMLSpanElement>(null);
-
   const currentValue = value ?? internalValue;
 
   function update(value: string) {
@@ -18,26 +17,6 @@ export default function ColorInput({
     } else {
       setInternalValue(value);
     }
-  }
-
-  function createRipple(event: React.MouseEvent<HTMLDivElement>) {
-    const ripple = rippleRef.current;
-    if (!ripple) return;
-
-    const rect = event.currentTarget.getBoundingClientRect();
-
-    const size = Math.max(rect.width, rect.height);
-
-    ripple.style.width = `${size}px`;
-    ripple.style.height = `${size}px`;
-    ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
-    ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
-
-    ripple.classList.remove('active');
-
-    requestAnimationFrame(() => {
-      ripple.classList.add('active');
-    });
   }
 
   return (
@@ -92,11 +71,12 @@ export default function ColorInput({
             text-text
             peer
           "
+          type="text"
           value={currentValue}
           onChange={(e) => update(e.target.value)}
         />
 
-        <div
+        <RippleButton
           className="
             relative
             w-8
@@ -104,8 +84,7 @@ export default function ColorInput({
             rounded-lg
             overflow-hidden
             cursor-pointer
-        "
-          onClick={createRipple}
+          "
         >
           <input
             type="color"
@@ -113,8 +92,6 @@ export default function ColorInput({
             onChange={(e) => update(e.target.value)}
             className="absolute inset-0 w-full h-full cursor-pointer"
           />
-
-          <span ref={rippleRef} className="ripple" />
 
           <div
             className="
@@ -129,7 +106,7 @@ export default function ColorInput({
               background: `color-mix(in oklab, ${currentValue} 85%, black 15%)`,
             }}
           />
-        </div>
+        </RippleButton>
       </div>
     </div>
   );
