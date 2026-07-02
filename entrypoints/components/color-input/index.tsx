@@ -43,6 +43,7 @@ export default function ColorInput({
   return (
     <div
       className="
+        group
         relative
         border-b border-border
         focus-within:border-accent
@@ -66,17 +67,17 @@ export default function ColorInput({
       <label
         className="
           absolute
-          left-2
-          top-2
+          left-0
+          top-6
           px-1
           bg-bg
           transition-all
           duration-200
           pointer-events-none
-          peer-focus:-top-3
-          peer-focus:left-1
-          peer-focus:scale-80
-          peer-focus:text-accent
+          group-focus-within:top-1
+          group-focus-within:left-1
+          group-focus-within:scale-80
+          group-focus-within:text-accent
         "
       >
         {label}

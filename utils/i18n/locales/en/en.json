@@ -10,5 +10,6 @@
   "imageUrl": "Image URL",
   "upload": "Upload",
   "imageUploading": "Image uploading isn't available yet.",
-  "imageUploadingDescription": "For now, choose a Lucide icon or provide an image URL."
+  "imageUploadingDescription": "For now, choose a Lucide icon or provide an image URL.",
+  "colorLabel": "Color"
 }
